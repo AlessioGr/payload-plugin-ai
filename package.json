@@ -29,7 +29,7 @@
     "build": "tsc",
     "lint": "eslint src",
     "lint:fix": "eslint --fix --ext .ts,.tsx src",
-    "clean": "rimraf dist && rimraf dev/yarn.lock",
+    "clean": "rimraf dist && rimraf demo/yarn.lock",
     "prepublishOnly": "yarn clean && yarn build"
   },
   "peerDependencies": {
