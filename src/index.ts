@@ -1,0 +1,1 @@
+export { ai } from './plugin'
