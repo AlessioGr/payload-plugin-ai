@@ -1,6 +1,6 @@
 # Payload AI plugin
 
-[![npm](https://npmbadge.com/npm/payload-plugin-ai)](https://www.npmjs.com/package/payload-plugin-ai)
+[![npm version](https://badge.fury.io/js/payload-plugin-ai.svg)](https://badge.fury.io/js/payload-plugin-ai)
 
 In this repository I will add a bunch of AI stuff! Currently, it can just generate embeddings for fields using the OpenAI API.
 
