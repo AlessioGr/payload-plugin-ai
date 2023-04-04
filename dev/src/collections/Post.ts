@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload/types'
-import genEmbeddings from "../../../src/hooks/genEmbeddings";
+import { genEmbeddings } from "../../../src/hooks/genEmbeddings";
 
 const Post: CollectionConfig = {
     slug: 'posts',

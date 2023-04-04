@@ -1,6 +1,26 @@
 {
   "name": "payload-plugin-ai",
   "description": "AI in payload",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlessioGr/payload-plugin-ai"
+  },
+  "author": "Alessio Gravili",
+  "bugs": {
+    "url": "https://github.com/AlessioGr/payload-plugin-ai/issues"
+  },
+  "homepage": "https://github.com/AlessioGr/payload-plugin-ai",
+  "keywords": [
+    "payload",
+    "cms",
+    "plugin",
+    "typescript",
+    "react",
+    "AI",
+    "openai",
+    "payload-plugin",
+    "embeddings"
+  ],
   "version": "1.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

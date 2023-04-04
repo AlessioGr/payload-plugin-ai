@@ -2,7 +2,7 @@ import { buildConfig } from 'payload/config'
 import path from 'path'
 import Users from './collections/Users'
 import Post from "./collections/Post";
-import {ai} from "../../src";
+import { ai } from "../../src";
 
 
 export default buildConfig({
