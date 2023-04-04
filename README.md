@@ -46,4 +46,4 @@ Now, every time you save the collection, embeddings for that field will be gener
 
 ## Other
 
-Project structure inspired by payload-plugin-cloud-storage and pcms-backpop plugin
+Project structure inspired by [payload-plugin-cloud-storage](https://github.com/payloadcms/plugin-cloud-storage) and [pcms-backpop](https://github.com/TimHal/pcms-backpop)
