@@ -37,7 +37,7 @@ export default buildConfig({
       limit: 1,
     })
 
-    if (!posts.docs.length) {
+    /* if (!posts.docs.length) {
       await payload.create({
         collection: 'posts',
         data: {
@@ -51,6 +51,6 @@ export default buildConfig({
           textArea: 'Payload is a content management system',
         },
       })
-    }
+    }*/
   },
 })
