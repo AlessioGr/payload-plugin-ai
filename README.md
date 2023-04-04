@@ -26,7 +26,7 @@ import { genEmbeddings } from 'payload-plugin-ai';
 
 ...
 
-yorField: {
+yourField: {
   ...
   hooks: {
     beforeChange: [
