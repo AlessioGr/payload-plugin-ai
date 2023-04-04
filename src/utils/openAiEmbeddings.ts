@@ -6,12 +6,7 @@ export const getEmbeddings = async ({
                                         config
                                     }: {content: string, config: PluginConfig}): Promise<CreateEmbeddingResponseDataInner[]> => {
 
-    const configuration = new Configuration({
-        apiKey: config.OPENAI_SECRET
-    });
-    const openai = new OpenAIApi(configuration);
-
-    const embeddings = await openai.createEmbedding({
+    const embeddings = await config.openai.createEmbedding({
         input: [content],
         model: 'text-embedding-ada-002'
     });

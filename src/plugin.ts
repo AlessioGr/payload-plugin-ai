@@ -1,16 +1,29 @@
-import type { Config } from 'payload/config'
+import type { Config } from "payload/config";
 import { genEmbeddings } from "./hooks/genEmbeddings";
-import {Field} from "payload/types";
+import { Field } from "payload/types";
 import collectionBeforeChangeGenEmbeddings from "./hooks/collectionBeforeChangeGenEmbeddings";
+import { Configuration, OpenAIApi } from "openai";
 
-export type PluginConfig = {
+export type IncomingPluginConfig = {
     OPENAI_SECRET: string;
+}
+export type PluginConfig = {
+    openai: OpenAIApi;
 }
 
 
 export const ai =
-  (pluginConfig: PluginConfig) =>
+  (incomingPluginConfig: IncomingPluginConfig) =>
   (config: Config): Config => {
+
+  const configuration = new Configuration({
+    apiKey: incomingPluginConfig.OPENAI_SECRET
+  });
+
+  const pluginConfig: PluginConfig = {
+    openai: new OpenAIApi(configuration)
+  };
+
   for (const collection of config.collections || []) {
     for (const field of collection.fields) {
       if (field.hasOwnProperty('hooks') && field.type !== "tabs" && field.type !== "collapsible" && field.type !== "row" && field.type !== "ui") {
