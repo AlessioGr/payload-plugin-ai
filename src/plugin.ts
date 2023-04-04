@@ -1,5 +1,5 @@
 import type { Config } from 'payload/config'
-import genEmbeddings from "./hooks/genEmbeddings";
+import { genEmbeddings } from "./hooks/genEmbeddings";
 import {Field} from "payload/types";
 import collectionBeforeChangeGenEmbeddings from "./hooks/collectionBeforeChangeGenEmbeddings";
 
