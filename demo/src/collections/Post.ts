@@ -1,22 +1,20 @@
-import type { CollectionConfig } from 'payload/types'
-import { genEmbeddings } from "../../../src/hooks/genEmbeddings";
+import { genEmbeddings } from "../../../src/options/genEmbeddings";
+import { CollectionConfig } from "payload/types";
 
 const Post: CollectionConfig = {
-    slug: 'posts',
-    access: {
-        read: () => true,
+  slug: "posts",
+  access: {
+    read: () => true,
+  },
+  fields: [
+    {
+      name: "textArea",
+      type: "textarea",
+      custom: {
+        ...genEmbeddings({ visible: true }),
+      },
     },
-    fields: [
-        {
-            name: 'textArea',
-            type: 'textarea',
-            hooks: {
-                beforeChange: [
-                    genEmbeddings,
-                ]
-            }
-        },
-    ],
-}
+  ],
+};
 
-export default Post
+export default Post;

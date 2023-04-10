@@ -1,65 +1,98 @@
 import type { Config } from "payload/config";
-import { genEmbeddings } from "./hooks/genEmbeddings";
-import { Field } from "payload/types";
+import { GenEmbeddingsConfig } from "./options/genEmbeddings";
 import collectionBeforeChangeGenEmbeddings from "./hooks/collectionBeforeChangeGenEmbeddings";
 import { Configuration, OpenAIApi } from "openai";
+import { Field } from "payload/types";
 
 export type IncomingPluginConfig = {
-    OPENAI_SECRET: string;
-}
+  OPENAI_SECRET: string;
+};
 export type PluginConfig = {
-    openai: OpenAIApi;
-}
+  openai: OpenAIApi;
+};
 
+export type FieldAIModifier = Record<string, unknown>;
+
+/*import {
+  CollectionConfig as PayloadCollectionConfig,
+  Field as PayloadField,
+} from "payload/types";
+
+export type Field<BaseField extends PayloadField = PayloadField> = BaseField & {
+  ai?: FieldAIModifier;
+};
+
+export type AICollectionConfig<
+  BaseCollection extends PayloadCollectionConfig = PayloadCollectionConfig
+> = Omit<BaseCollection, "fields"> & { fields: Field[] };*/
 
 export const ai =
   (incomingPluginConfig: IncomingPluginConfig) =>
   (config: Config): Config => {
+    const configuration = new Configuration({
+      apiKey: incomingPluginConfig.OPENAI_SECRET,
+    });
 
-  const configuration = new Configuration({
-    apiKey: incomingPluginConfig.OPENAI_SECRET
-  });
+    const pluginConfig: PluginConfig = {
+      openai: new OpenAIApi(configuration),
+    };
 
-  const pluginConfig: PluginConfig = {
-    openai: new OpenAIApi(configuration)
-  };
+    for (const collection of config.collections || []) {
+      for (const field of collection.fields) {
+        if (
+          field.hasOwnProperty("custom") &&
+          field.type !== "tabs" &&
+          field.type !== "collapsible" &&
+          field.type !== "row" &&
+          field.type !== "ui"
+        ) {
+          if (field?.custom?.genEmbeddings) {
+            const embeddingsConfig: GenEmbeddingsConfig =
+              field.custom?.genEmbeddings;
+            console.log("EMbeddings config", embeddingsConfig);
 
-  for (const collection of config.collections || []) {
-    for (const field of collection.fields) {
-      if (field.hasOwnProperty('hooks') && field.type !== "tabs" && field.type !== "collapsible" && field.type !== "row" && field.type !== "ui") {
-        let hasEmbeddingsHook = false;
-        if (field?.hooks?.beforeChange) {
-          hasEmbeddingsHook = !!field.hooks.beforeChange.find(
-              (hook) => hook === genEmbeddings
-          );
-        }
-        if (hasEmbeddingsHook) {
-          // add hook & field to collection
-          collection.fields.push(embeddingsField({fieldName: field.name + "_embeddings"}));
+            // add hook & field to collection
+            collection.fields.push(
+              embeddingsField({
+                fieldName: field.name + "_embeddings",
+                hidden: !embeddingsConfig.visible,
+              })
+            );
 
-          if(!collection.hooks){
-            collection.hooks = {};
+            if (!collection.hooks) {
+              collection.hooks = {};
+            }
+            if (!collection.hooks.beforeChange) {
+              collection.hooks.beforeChange = [];
+            }
+            collection.hooks.beforeChange.push(
+              collectionBeforeChangeGenEmbeddings({
+                fieldName: field.name,
+                embeddingsFieldName: field.name + "_embeddings",
+                config: pluginConfig,
+              })
+            );
           }
-          if(!collection.hooks.beforeChange){
-            collection.hooks.beforeChange = [];
-          }
-            collection.hooks.beforeChange.push(collectionBeforeChangeGenEmbeddings({fieldName: field.name, embeddingsFieldName: field.name + "_embeddings", config: pluginConfig}));
-
         }
       }
     }
-  }
 
-  return config;
-}
-
+    return config;
+  };
 
 const embeddingsField = ({
   fieldName,
-}: {fieldName: string}) => {
+  hidden = false,
+}: {
+  fieldName: string;
+  hidden?: boolean;
+}) => {
   const embeddingsField: Field = {
-        name: fieldName,
-        type: "text",
+    name: fieldName,
+    type: "text",
+    admin: {
+      hidden: hidden,
+    },
   };
   return embeddingsField;
 };
