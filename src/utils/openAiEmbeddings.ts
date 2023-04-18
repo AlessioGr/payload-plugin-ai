@@ -13,8 +13,9 @@ export const getEmbeddings = async ({
   config: PluginConfig;
 }): Promise<number[]> => {
   if (config.embeddings.provider === "nlpcloud") {
-    const embeddings = (await config.nlpCloud.embeddings([content])).data
-      .embeddings[0];
+    const embeddings = (
+      (await config.nlpCloud.embeddings([content])).data as any
+    ).embeddings[0];
 
     console.log("NLP Cloud Embeddings", embeddings);
     return embeddings;
