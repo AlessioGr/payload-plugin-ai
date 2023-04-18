@@ -89,7 +89,8 @@ const embeddingsField = ({
 }) => {
   const embeddingsField: Field = {
     name: fieldName,
-    type: "text",
+    type: "number",
+    hasMany: true,
     admin: {
       hidden: hidden,
     },

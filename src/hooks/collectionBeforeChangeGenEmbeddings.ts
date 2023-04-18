@@ -7,7 +7,8 @@ const collectionBeforeChangeGenEmbeddings: ({fieldName, embeddingsFieldName, con
 
     const embeddings = await getEmbeddings({content: toEmbedText, config: config});
     if(embeddings?.length > 0  && embeddings[0]?.embedding && embeddings[0].embedding.length > 0){
-        args.data[embeddingsFieldName] = embeddings[0].embedding.toString();
+        console.log("Embeddings", embeddings[0].embedding);
+        args.data[embeddingsFieldName] = embeddings[0].embedding;
     }
 
     return args.data;
