@@ -34,7 +34,7 @@ plugins: [
 
 ![Embeddings generated in the Admin UI](https://user-images.githubusercontent.com/70709113/229883550-5cec9ab9-dc53-4e00-9b47-f3509beb1705.jpg)
 
-To enable embeddings on a field, simply add this hook to the field:
+To enable embeddings on a field, simply add this property to the field:
 
 ```ts
 import { genEmbeddings } from 'payload-plugin-ai';
