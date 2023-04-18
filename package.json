@@ -57,6 +57,7 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
+    "nlpcloud": "^1.0.43",
     "openai": "^3.2.1",
     "payload": "alessiogr/payload#production-with-custom"
   }

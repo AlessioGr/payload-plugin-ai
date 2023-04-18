@@ -11,13 +11,22 @@ export const getEmbeddings = async ({
 }: {
   content: string;
   config: PluginConfig;
-}): Promise<CreateEmbeddingResponseDataInner[]> => {
-  const embeddings = await config.openai.createEmbedding({
-    input: [content],
-    model: "text-embedding-ada-002",
-  });
+}): Promise<number[]> => {
+  if (config.embeddings.provider === "nlpcloud") {
+    const embeddings = (await config.nlpCloud.embeddings([content])).data
+      .embeddings[0];
 
-  console.log(embeddings.data.data);
+    console.log("NLP Cloud Embeddings", embeddings);
+    return embeddings;
+  } else {
+    //openai
+    const embeddings = await config.openai.createEmbedding({
+      input: [content],
+      model: "text-embedding-ada-002",
+    });
 
-  return embeddings.data.data;
+    console.log(embeddings.data.data[0].embedding);
+
+    return embeddings.data.data[0].embedding;
+  }
 };

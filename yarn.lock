@@ -1216,6 +1216,13 @@ available-typed-arrays@^1.0.5:
   resolved "https://registry.yarnpkg.com/available-typed-arrays/-/available-typed-arrays-1.0.5.tgz#92f95616501069d07d10edb2fc37d3e1c65123b7"
   integrity sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==
 
+axios@^0.21.1:
+  version "0.21.4"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.4.tgz#c67b90dc0568e5c1cf2b0b858c43ba28e2eda575"
+  integrity sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==
+  dependencies:
+    follow-redirects "^1.14.0"
+
 axios@^0.26.0:
   version "0.26.1"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.26.1.tgz#1ede41c51fcf51bbbd6fd43669caaa4f0495aaa9"
@@ -2769,7 +2776,7 @@ focus-trap@^6.9.2:
   dependencies:
     tabbable "^5.3.3"
 
-follow-redirects@^1.14.8:
+follow-redirects@^1.14.0, follow-redirects@^1.14.8:
   version "1.15.2"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.2.tgz#b460864144ba63f2681096f274c4e57026da2c13"
   integrity sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==
@@ -4092,6 +4099,13 @@ next-tick@1, next-tick@^1.1.0:
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.1.0.tgz#1836ee30ad56d67ef281b22bd199f709449b35eb"
   integrity sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==
 
+nlpcloud@^1.0.43:
+  version "1.0.43"
+  resolved "https://registry.yarnpkg.com/nlpcloud/-/nlpcloud-1.0.43.tgz#1828e5d2c13c19f2121b526dac912f1f70e65077"
+  integrity sha512-cc9JOQME0oh65FIBNNszBhJv7tuCx8pRYZwUCuh5U1TGkYu2jqRmGT7hW9R0fQ4rhaH1sixw2Lz1o7FJ5hozqA==
+  dependencies:
+    axios "^0.21.1"
+
 no-case@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/no-case/-/no-case-3.0.4.tgz#d361fd5c9800f558551a8369fc0dcd4662b6124d"
@@ -4497,6 +4511,7 @@ payload@alessiogr/payload#production-with-custom:
     dotenv "^8.6.0"
     express "^4.18.2"
     express-fileupload "1.4.0"
+    express-graphql "0.12.0"
     express-rate-limit "^5.5.1"
     file-loader "^6.2.0"
     file-type "16.5.4"
@@ -4505,7 +4520,6 @@ payload@alessiogr/payload#production-with-custom:
     fs-extra "^10.1.0"
     get-tsconfig "^4.4.0"
     graphql "^16.6.0"
-    graphql-http "^1.17.1"
     graphql-playground-middleware-express "^1.7.23"
     graphql-query-complexity "^0.12.0"
     graphql-scalars "^1.20.1"
@@ -4577,7 +4591,7 @@ payload@alessiogr/payload#production-with-custom:
     url-loader "^4.1.1"
     use-context-selector "^1.4.1"
     uuid "^8.3.2"
-    webpack "^5.78.0"
+    webpack "^5.76.0"
     webpack-bundle-analyzer "^4.8.0"
     webpack-cli "^4.10.0"
     webpack-dev-middleware "6.0.1"
