@@ -2,7 +2,10 @@
 
 [![npm version](https://badge.fury.io/js/payload-plugin-ai.svg)](https://badge.fury.io/js/payload-plugin-ai)
 
-ATTENTION: This plugin currently requires a custom fork of payload to work (replace `payload` with `yarn add alessiogr/payload#production-with-custom`). This is because a [PR](https://github.com/payloadcms/payload/pull/2436) this plugin depends on is not merged yet.
+ATTENTION: This plugin currently requires a custom fork of payload to work (replace `payload` with `yarn add alessiogr/payload#production-with-custom`). This is because this plugins depends on two PRs which haven't been merged into payload yet:
+
+- [PR 1 (custom property)](https://github.com/payloadcms/payload/pull/2436)
+- [PR 2 (hasMany numbers)](https://github.com/payloadcms/payload/pull/2517)
 
 In this repository I will add a bunch of AI stuff! Currently, it can just generate embeddings for fields using the OpenAI API. Expect things to break with updates without notice.
 
